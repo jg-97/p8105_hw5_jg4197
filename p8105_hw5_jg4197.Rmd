@@ -20,25 +20,25 @@ set.seed(10)
 
 iris_with_missing = iris %>% 
   map_df(~replace(.x, sample(1:150, 20), NA)) %>%
-  mutate(Species = as.character(Species)) %>% view
+  mutate(Species = as.character(Species))
 
 add_missing <- function(df){
   if(is.numeric(df)){
-    replace_na(df, mean(df, na.rm = TRUE)) %>% tibble
+    df = replace_na(df, mean(df, na.rm = TRUE))
   } else if(is.character(df)){
-    replace_na(df, "virginica") %>% tibble
+    df = replace_na(df, "virginica")
   }
 }
 
-map_dfc(iris_with_missing, add_missing)
-
-
+map_df(iris_with_missing, add_missing)
 
 ```
 
 ## problem 2 making plot
 
 ```{r}
+
+
 ```
 
 ## problem 3 conducting simulation
